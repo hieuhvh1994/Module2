@@ -9,6 +9,14 @@ public class PrisonerManager implements IGeneralManager<Prisoner> {
     private List<Prisoner> prisonerList = new ArrayList<>();
 
 
+    public List<Prisoner> getPrisonerList() {
+        return prisonerList;
+    }
+
+    public void setPrisonerList(List<Prisoner> prisonerList) {
+        this.prisonerList = prisonerList;
+    }
+
     @Override
     public List<Prisoner> findAll() {
         return prisonerList;

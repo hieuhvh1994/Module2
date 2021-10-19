@@ -9,6 +9,14 @@ import java.util.List;
 public class CellRoomManager implements IGeneralManager<CellRoom> {
     private List<CellRoom> cellRoomList = new ArrayList<>();
 
+    public List<CellRoom> getCellRoomList() {
+        return cellRoomList;
+    }
+
+    public void setCellRoomList(List<CellRoom> cellRoomList) {
+        this.cellRoomList = cellRoomList;
+    }
+
     @Override
     public List<CellRoom> findAll() {
         return cellRoomList;
@@ -54,6 +62,14 @@ public class CellRoomManager implements IGeneralManager<CellRoom> {
     public void showAllList() {
         for (CellRoom c : cellRoomList) {
             System.out.println(c.toString());
+        }
+    }
+
+    public void addNewPrisoner(Prisoner prisoner, CellRoom cellRoom) {
+        for (CellRoom c : cellRoomList) {
+            if (c.getNumber() == cellRoom.getNumber()) {
+                c.addNewPrisoner(prisoner);
+            }
         }
     }
 }

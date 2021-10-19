@@ -56,4 +56,8 @@ public class Camp {
                 ", warden=" + warden +
                 '}';
     }
+
+    public void addNewCellRoom(CellRoom cellRoom) {
+        cellRooms.add(cellRoom);
+    }
 }

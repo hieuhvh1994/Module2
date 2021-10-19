@@ -66,6 +66,7 @@ public class CellRoom {
                 ", roomLevel='" + roomLevel + '\'' +
                 ", numberOfBeds=" + numberOfBeds +
                 ", status=" + status +
+                ", prisoners=" + prisoners +
                 '}';
     }
 }

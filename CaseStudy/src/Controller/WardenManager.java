@@ -8,6 +8,14 @@ import java.util.List;
 public class WardenManager implements IGeneralManager<Warden> {
     private List<Warden> wardenList = new ArrayList<>();
 
+    public List<Warden> getWardenList() {
+        return wardenList;
+    }
+
+    public void setWardenList(List<Warden> wardenList) {
+        this.wardenList = wardenList;
+    }
+
     @Override
     public List<Warden> findAll() {
         return wardenList;
