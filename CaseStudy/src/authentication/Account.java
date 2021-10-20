@@ -1,6 +1,6 @@
 package authentication;
 
-public class Account extends AbstractUser {
+public class Account implements AbstractUser {
     private String username;
     private String password;
     private String role;
@@ -17,52 +17,52 @@ public class Account extends AbstractUser {
 
 
     @Override
-    String getUsername() {
+    public String getUsername() {
         return username;
     }
 
     @Override
-    void setUsername(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
     @Override
-    String getPassword() {
+    public String getPassword() {
         return password;
     }
 
     @Override
-    void setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
     @Override
-    String getRole() {
+    public String getRole() {
         return role;
     }
 
     @Override
-    void setRole(String role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
     @Override
-    String getFullName() {
+    public String getFullName() {
         return fullName;
     }
 
     @Override
-    void setFullName(String fullName) {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return id;
     }
 
     @Override
-    void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 

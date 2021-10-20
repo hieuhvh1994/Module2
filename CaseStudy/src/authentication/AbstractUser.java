@@ -1,26 +1,26 @@
 package authentication;
 
-public abstract class AbstractUser {
+public interface AbstractUser {
 
-    abstract String getUsername();
+    public String getUsername();
 
-    abstract void setUsername(String username);
+    public void setUsername(String username);
 
-    abstract String getPassword();
+    public String getPassword();
 
-    abstract void setPassword(String password);
+    public void setPassword(String password);
 
-    abstract String getRole();
+    public String getRole();
 
-    abstract void setRole(String role);
+    public void setRole(String role);
 
-    abstract String getFullName();
+    public String getFullName();
 
-    abstract void setFullName(String fullName);
+    public void setFullName(String fullName);
 
-    abstract int getId();
+    public int getId();
 
-    abstract void setId(int id);
+    public void setId(int id);
 
 
 

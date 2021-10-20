@@ -6,7 +6,7 @@ import storage.FileManagerAccount;
 import java.io.IOException;
 import java.util.List;
 
-public class AccountManagement implements IGeneralManager<Account> {
+public class AccountManager implements IGeneralManager<Account> {
     private List<Account> accountList;
     private FileManagerAccount fileManagerAccount;
 
@@ -55,5 +55,15 @@ public class AccountManagement implements IGeneralManager<Account> {
         for (Account a : accountList) {
             System.out.println(a.toString());
         }
+    }
+
+    public Account searchByUsername(String username) {
+        Account account = null;
+        for (Account a : accountList) {
+            if (a.getUsername().equals(username)) {
+                account = a;
+            }
+        }
+        return account;
     }
 }

@@ -7,7 +7,6 @@ import model.Prisoner;
 import model.Warden;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LoadingFileManagers {
@@ -16,53 +15,26 @@ public class LoadingFileManagers {
     public static List<CellRoom> cellRooms = null;
     public static List<Camp> camps = null;
     public static List<Account> accounts = null;
+    public static FileManagerPrisoner fileManagerPrisoner = FileManagerPrisoner.getInstance();
+    public static FileManagerWarden fileManagerWarden = FileManagerWarden.getInstance();
+    public static FileManagerCellRoom fileManagerCellRoom = FileManagerCellRoom.getInstance();
+    public static FileManagerAccount fileManagerAccount = FileManagerAccount.getInstance();
+    public static FileManagerCamp fileManagerCamp = FileManagerCamp.getInstance();
+
 
     public static void loadManagementFiles() {
-        FileManagerPrisoner fileManagerPrisoner = FileManagerPrisoner.getInstance();
+
         try {
             prisoners = fileManagerPrisoner.readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        FileManagerWarden fileManagerWarden = FileManagerWarden.getInstance();
-        try {
             wardens = fileManagerWarden.readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-
-        FileManagerCellRoom fileManagerCellRoom = FileManagerCellRoom.getInstance();
-        try {
             cellRooms = fileManagerCellRoom.readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        FileManagerCamp fileManagerCamp = FileManagerCamp.getInstance();
-        try {
             camps = fileManagerCamp.readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        FileManagerAccount fileManagerAccount = FileManagerAccount.getInstance();
-        try {
             accounts = fileManagerAccount.readFile();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
 
+    }
 }
