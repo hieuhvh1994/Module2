@@ -1,9 +1,10 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
-public class Prisoner {
+public class Prisoner implements Serializable {
     private String name;
     private String address;
     private int id;

@@ -27,7 +27,8 @@ public class WardenManager implements IGeneralManager<Warden> {
     }
 
     @Override
-    public void update(Warden warden) {
+    public void update(int index, Warden warden) {
+        wardenList.set(index, warden);
 
     }
 

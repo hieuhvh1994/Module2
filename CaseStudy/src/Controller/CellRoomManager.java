@@ -28,8 +28,8 @@ public class CellRoomManager implements IGeneralManager<CellRoom> {
     }
 
     @Override
-    public void update(CellRoom cellRoom) {
-
+    public void update(int index, CellRoom cellRoom) {
+        cellRoomList.set(index, cellRoom);
     }
 
     @Override

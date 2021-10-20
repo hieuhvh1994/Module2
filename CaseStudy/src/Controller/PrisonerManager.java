@@ -28,7 +28,8 @@ public class PrisonerManager implements IGeneralManager<Prisoner> {
     }
 
     @Override
-    public void update(Prisoner prisoner) {
+    public void update(int index, Prisoner prisoner) {
+        prisonerList.set(index, prisoner);
     }
 
 

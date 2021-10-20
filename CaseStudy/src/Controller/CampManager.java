@@ -28,8 +28,8 @@ public class CampManager implements IGeneralManager<Camp> {
     }
 
     @Override
-    public void update(Camp camp) {
-
+    public void update(int index, Camp camp) {
+        campList.set(index, camp);
     }
 
     @Override
