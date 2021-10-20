@@ -1,12 +1,15 @@
-package Controller;
+package controller;
 
-import Model.Prisoner;
+import model.Prisoner;
+import storage.FileManagerPrisoner;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PrisonerManager implements IGeneralManager<Prisoner> {
     private List<Prisoner> prisonerList = new ArrayList<>();
+    private FileManagerPrisoner fileManagerPrisoner;
 
 
     public List<Prisoner> getPrisonerList() {
@@ -23,19 +26,22 @@ public class PrisonerManager implements IGeneralManager<Prisoner> {
     }
 
     @Override
-    public void add(Prisoner prisoner) {
+    public void add(Prisoner prisoner) throws IOException {
         prisonerList.add(prisoner);
+        fileManagerPrisoner.writeFile(prisonerList);
     }
 
     @Override
-    public void update(int index, Prisoner prisoner) {
+    public void update(int index, Prisoner prisoner) throws IOException {
         prisonerList.set(index, prisoner);
+        fileManagerPrisoner.writeFile(prisonerList);
     }
 
 
     @Override
-    public void deleteById(int index) {
+    public void deleteById(int index) throws IOException {
         prisonerList.remove(index);
+        fileManagerPrisoner.writeFile(prisonerList);
     }
 
 
@@ -65,6 +71,8 @@ public class PrisonerManager implements IGeneralManager<Prisoner> {
         for (Prisoner p : prisonerList) {
             System.out.println(p.toString());
         }
+
+
     }
 
 

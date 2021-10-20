@@ -1,4 +1,4 @@
-package Authentication;
+package authentication;
 
 public class Account extends AbstractUser {
     private String username;

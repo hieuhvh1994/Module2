@@ -1,13 +1,16 @@
-package Controller;
+package controller;
 
-import Model.Camp;
-import Model.CellRoom;
+import model.Camp;
+import model.CellRoom;
+import storage.FileManagerCamp;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CampManager implements IGeneralManager<Camp> {
     private List<Camp> campList = new ArrayList<>();
+    private FileManagerCamp fileManagerCamp;
 
     public List<Camp> getCampList() {
         return campList;
@@ -17,24 +20,36 @@ public class CampManager implements IGeneralManager<Camp> {
         this.campList = campList;
     }
 
+    public FileManagerCamp getFileManagerCamp() {
+        return fileManagerCamp;
+    }
+
+    public void setFileManagerCamp(FileManagerCamp fileManagerCamp) {
+        this.fileManagerCamp = fileManagerCamp;
+    }
+
     @Override
     public List<Camp> findAll() {
         return campList;
     }
 
     @Override
-    public void add(Camp camp) {
+    public void add(Camp camp) throws IOException {
         campList.add(camp);
+        fileManagerCamp.writeFile(campList);
+
     }
 
     @Override
-    public void update(int index, Camp camp) {
+    public void update(int index, Camp camp) throws IOException {
         campList.set(index, camp);
+        fileManagerCamp.writeFile(campList);
     }
 
     @Override
-    public void deleteById(int index) {
+    public void deleteById(int index) throws IOException {
         campList.remove(campList.get(index));
+        fileManagerCamp.writeFile(campList);
     }
 
     @Override
@@ -44,12 +59,13 @@ public class CampManager implements IGeneralManager<Camp> {
         }
     }
 
-    public void addNewCellRoom(CellRoom cellRoom, Camp camp) {
+    public void addNewCellRoom(CellRoom cellRoom, Camp camp) throws IOException {
         for (Camp c : campList) {
             if (c.getId() == camp.getId()) {
                 c.addNewCellRoom(cellRoom);
             }
         }
+        fileManagerCamp.writeFile(campList);
     }
 
 }

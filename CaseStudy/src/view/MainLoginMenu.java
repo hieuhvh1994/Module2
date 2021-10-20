@@ -1,11 +1,15 @@
-package View;
+package view;
 
-import Model.Prison;
+import authentication.Account;
+import storage.LoadingFileManagers;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MainLoginMenu {
     public static void mainLoginMenu() {
+
+        LoadingFileManagers.loadManagementFiles();
 
         while (true) {
             System.out.println("Thanh Xuan Prison System ");
@@ -14,6 +18,7 @@ public class MainLoginMenu {
             Scanner usernameScanner = new Scanner(System.in);
             System.out.println("Enter username: ");
             String username = usernameScanner.nextLine();
+
 
         }
     }

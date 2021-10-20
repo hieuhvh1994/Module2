@@ -1,9 +1,10 @@
-package Model;
+package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CellRoom {
+public class CellRoom implements Serializable {
     private int number;
     private String roomLevel;
     private int numberOfBeds;

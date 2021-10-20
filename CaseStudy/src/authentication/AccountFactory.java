@@ -1,4 +1,4 @@
-package Authentication;
+package authentication;
 
 public class AccountFactory {
     public static Account getAccount(AccountLevel accountLevel, String username, String password, String fullName, int id) {

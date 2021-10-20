@@ -1,8 +1,9 @@
-package Model;
+package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Warden {
+public class Warden implements Serializable {
     private String name;
     private String address;
     private LocalDate dob;

@@ -1,8 +1,9 @@
-package Model;
+package model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Camp {
+public class Camp implements Serializable {
     private String name;
     private int id;
     private List<CellRoom> cellRooms;

@@ -1,13 +1,12 @@
-package Storage;
+package storage;
 
-import Model.Camp;
-import Model.CellRoom;
+import model.Camp;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileManagerCamp extends AbstractFileManager<Camp>{
+public class FileManagerCamp implements AbstractFileManager<Camp>{
     private static FileManagerCamp fileManagerCamp;
     private FileManagerCamp() {
 

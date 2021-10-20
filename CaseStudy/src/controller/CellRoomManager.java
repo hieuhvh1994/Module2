@@ -1,13 +1,16 @@
-package Controller;
+package controller;
 
-import Model.CellRoom;
-import Model.Prisoner;
+import model.CellRoom;
+import model.Prisoner;
+import storage.FileManagerCellRoom;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CellRoomManager implements IGeneralManager<CellRoom> {
     private List<CellRoom> cellRoomList = new ArrayList<>();
+    private FileManagerCellRoom fileManagerCellRoom;
 
     public List<CellRoom> getCellRoomList() {
         return cellRoomList;
@@ -17,24 +20,35 @@ public class CellRoomManager implements IGeneralManager<CellRoom> {
         this.cellRoomList = cellRoomList;
     }
 
+    public FileManagerCellRoom getFileManagerCellRoom() {
+        return fileManagerCellRoom;
+    }
+
+    public void setFileManagerCellRoom(FileManagerCellRoom fileManagerCellRoom) {
+        this.fileManagerCellRoom = fileManagerCellRoom;
+    }
+
     @Override
     public List<CellRoom> findAll() {
         return cellRoomList;
     }
 
     @Override
-    public void add(CellRoom cellRoom) {
+    public void add(CellRoom cellRoom) throws IOException {
         cellRoomList.add(cellRoom);
+        fileManagerCellRoom.writeFile(cellRoomList);
     }
 
     @Override
-    public void update(int index, CellRoom cellRoom) {
+    public void update(int index, CellRoom cellRoom) throws IOException {
         cellRoomList.set(index, cellRoom);
+        fileManagerCellRoom.writeFile(cellRoomList);
     }
 
     @Override
-    public void deleteById(int index) {
+    public void deleteById(int index) throws IOException {
         cellRoomList.remove(index);
+        fileManagerCellRoom.writeFile(cellRoomList);
     }
 
     public CellRoom searchByNumber(int number) {
@@ -65,11 +79,12 @@ public class CellRoomManager implements IGeneralManager<CellRoom> {
         }
     }
 
-    public void addNewPrisoner(Prisoner prisoner, CellRoom cellRoom) {
+    public void addNewPrisoner(Prisoner prisoner, CellRoom cellRoom) throws IOException {
         for (CellRoom c : cellRoomList) {
             if (c.getNumber() == cellRoom.getNumber()) {
                 c.addNewPrisoner(prisoner);
             }
         }
+        fileManagerCellRoom.writeFile(cellRoomList);
     }
 }

@@ -1,12 +1,12 @@
-package Storage;
+package storage;
 
-import Model.CellRoom;
+import model.CellRoom;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileManagerCellRoom extends AbstractFileManager<CellRoom> {
+public class FileManagerCellRoom implements AbstractFileManager<CellRoom> {
     private static FileManagerCellRoom fileManagerCellRoom;
     private FileManagerCellRoom() {
 

@@ -1,12 +1,12 @@
-package Storage;
+package storage;
 
-import Model.Warden;
+import model.Warden;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileManagerWarden extends AbstractFileManager<Warden> {
+public class FileManagerWarden implements AbstractFileManager<Warden> {
     private static FileManagerWarden fileManagerWarden;
     private FileManagerWarden() {
 

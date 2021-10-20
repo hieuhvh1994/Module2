@@ -1,12 +1,12 @@
-package Storage;
+package storage;
 
-import Model.Prisoner;
+import model.Prisoner;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileManagerPrisoner extends AbstractFileManager<Prisoner> {
+public class FileManagerPrisoner implements AbstractFileManager<Prisoner> {
     private static FileManagerPrisoner fileManagerPrisoner;
     private FileManagerPrisoner() {
 

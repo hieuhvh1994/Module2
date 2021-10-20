@@ -1,13 +1,18 @@
-package Model;
+package controller;
 
+import model.Camp;
+import model.Warden;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class Prison {
+public class
+PrisonManager implements Serializable {
     private String name;
     private List<Camp> camps;
     private Warden wardenLeader;
 
-    public Prison(String name, List<Camp> camps, Warden wardenLeader) {
+    public PrisonManager(String name, List<Camp> camps, Warden wardenLeader) {
         this.name = name;
         this.camps = camps;
         this.wardenLeader = wardenLeader;
