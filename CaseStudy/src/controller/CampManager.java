@@ -5,10 +5,11 @@ import model.CellRoom;
 import storage.FileManagerCamp;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CampManager implements IGeneralManager<Camp> {
+public class CampManager implements IGeneralManager<Camp>, Serializable {
     private List<Camp> campList = new ArrayList<>();
     private FileManagerCamp fileManagerCamp;
 

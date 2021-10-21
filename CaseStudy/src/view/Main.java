@@ -1,28 +1,43 @@
 package view;
 
 import authentication.Account;
-import controller.*;
-import model.*;
-import storage.*;
+import authentication.AccountLevel;
+import controller.AccountManager;
+import controller.CellRoomManager;
+import controller.PrisonerManager;
+import controller.WardenManager;
+import model.CellRoom;
+import model.Prisoner;
+import model.Warden;
+import storage.LoadingFileManagers;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-//        Warden w1 = new Warden("Trong", "Hanoi", (LocalDate.of(1994, 12, 9)), 123, (LocalDate.of(2010, 1, 26)) , "Leader");
-//        Prisoner p1 = new Prisoner("Phuc", "Quang Ngai", 111, (LocalDate.of(1994, 12, 9)), "A", 2, (LocalDate.of(2010, 1, 26)));
-//        CellRoom c1 = new CellRoom(101, "B", 4, true);
-//
+    public static void main(String[] args) throws IOException {
+
+        LoadingFileManagers.loadManagementFiles();
+
+
+        Account account1 = new Account("dinhtrong", "123", AccountLevel.LEADER, "Nguyen Dinh Trong", 12345);
+        Warden w1 = new Warden("Trong", "Hanoi", (LocalDate.of(1994, 12, 9)), 123, (LocalDate.of(2010, 1, 26)) , "Leader", account1);
+        Prisoner p1 = new Prisoner("Phuc", "Quang Ngai", 111, (LocalDate.of(1994, 12, 9)), "A", 2, (LocalDate.of(2010, 1, 26)));
+        CellRoom c1 = new CellRoom(101, "B", 4, true);
+
 //        WardenManager wm = new WardenManager();
-//        PrisonerManager pm = new PrisonerManager();
-//        CellRoomManager cm = new CellRoomManager();
-//
 //        wm.add(w1);
-//        pm.add(p1);
-//        cm.add(c1);
+//        wm.showAllList();
+
+        LoadingFileManagers.wardenManager.add(w1);
+        LoadingFileManagers.prisonerManager.add(p1);
+        LoadingFileManagers.cellRoomManager.add(c1);
+        LoadingFileManagers.accountManager.add(account1);
+
+
+
+
 //
 //        cm.addNewPrisoner(p1, c1);
 //
@@ -39,9 +54,9 @@ public class Main {
 
 
 
-        System.out.println("THANH XUAN PRISON MANAGEMENT SYSTEM");
-        System.out.println("------------------------------------");
-        MainLoginMenu.mainLoginMenu();
+//        System.out.println("THANH XUAN PRISON MANAGEMENT SYSTEM");
+//        System.out.println("------------------------------------");
+//        MainLoginMenu.enable();
 
 
 

@@ -4,9 +4,10 @@ import authentication.Account;
 import storage.FileManagerAccount;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
-public class AccountManager implements IGeneralManager<Account> {
+public class AccountManager implements IGeneralManager<Account>, Serializable {
     private List<Account> accountList;
     private FileManagerAccount fileManagerAccount;
 

@@ -10,9 +10,9 @@ public interface AbstractUser {
 
     public void setPassword(String password);
 
-    public String getRole();
+    public AccountLevel getRole();
 
-    public void setRole(String role);
+    public void setRole(AccountLevel role);
 
     public String getFullName();
 

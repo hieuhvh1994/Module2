@@ -1,12 +1,13 @@
 package storage;
 
 import model.CellRoom;
+import model.Warden;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileManagerCellRoom implements AbstractFileManager<CellRoom> {
+public class FileManagerCellRoom implements AbstractFileManager<CellRoom>, Serializable {
     private static FileManagerCellRoom fileManagerCellRoom;
     private FileManagerCellRoom() {
 
@@ -23,31 +24,49 @@ public class FileManagerCellRoom implements AbstractFileManager<CellRoom> {
 
     @Override
     public void writeFile(List<CellRoom> cellRooms) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream("cellroom_list.txt");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(cellRooms);
-        objectOutputStream.close();
-        fileOutputStream.close();
+        if (cellRooms == null) {
+            cellRooms = new ArrayList<>();
+        }
+        File file = new File("cellroom_list.txt");
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(cellRooms);
+            oos.close();
+            fos.close();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
 
     @Override
     public List<CellRoom> readFile() throws IOException, ClassNotFoundException {
+        List<CellRoom> cellRoomList = new ArrayList<>();
         File file = new File("cellroom_list.txt");
         if (!file.exists()) {
-            file.createNewFile();
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        if(file.length() > 0) {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            Object object = objectInputStream.readObject();
-            List<CellRoom> list = (List<CellRoom>) object;
-            objectInputStream.close();
-            fileInputStream.close();
-            return list;
-        } else {
+        if (file.length() == 0) {
             return new ArrayList<>();
         }
+        try {
+            FileInputStream is = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(is);
+            cellRoomList = (List<CellRoom>) ois.readObject();
+            ois.close();
+            is.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return cellRoomList;
     }
 }

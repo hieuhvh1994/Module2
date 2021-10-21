@@ -5,10 +5,11 @@ import model.Prisoner;
 import storage.FileManagerCellRoom;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CellRoomManager implements IGeneralManager<CellRoom> {
+public class CellRoomManager implements IGeneralManager<CellRoom>, Serializable {
     private List<CellRoom> cellRoomList = new ArrayList<>();
     private FileManagerCellRoom fileManagerCellRoom;
 

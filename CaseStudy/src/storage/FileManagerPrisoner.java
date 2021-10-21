@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileManagerPrisoner implements AbstractFileManager<Prisoner> {
+public class FileManagerPrisoner implements AbstractFileManager<Prisoner>, Serializable {
     private static FileManagerPrisoner fileManagerPrisoner;
     private FileManagerPrisoner() {
 
@@ -21,29 +21,47 @@ public class FileManagerPrisoner implements AbstractFileManager<Prisoner> {
 
     @Override
     public void writeFile(List<Prisoner> prisoners) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream("prisoner_list.txt");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(prisoners);
-        objectOutputStream.close();
-        fileOutputStream.close();
+        if (prisoners == null) {
+            prisoners = new ArrayList<>();
+        }
+        File file = new File("prisoner_list.txt");
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(prisoners);
+            oos.close();
+            fos.close();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public List<Prisoner> readFile() throws IOException, ClassNotFoundException {
+    public List<Prisoner> readFile() {
+        List<Prisoner> prisonerList = new ArrayList<>();
         File file = new File("prisoner_list.txt");
         if (!file.exists()) {
-            file.createNewFile();
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        if (file.length() > 0) {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            Object object = objectInputStream.readObject();
-            List<Prisoner> list = (List<Prisoner>) object;
-            objectInputStream.close();
-            fileInputStream.close();
-            return list;
-        } else {
+        if (file.length() == 0) {
             return new ArrayList<>();
         }
+        try {
+            FileInputStream is = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(is);
+            prisonerList = (List<Prisoner>) ois.readObject();
+            ois.close();
+            is.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return prisonerList;
     }
 }

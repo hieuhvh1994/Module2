@@ -12,6 +12,9 @@ PrisonManager implements Serializable {
     private List<Camp> camps;
     private Warden wardenLeader;
 
+    public PrisonManager() {
+    }
+
     public PrisonManager(String name, List<Camp> camps, Warden wardenLeader) {
         this.name = name;
         this.camps = camps;

@@ -4,11 +4,12 @@ import model.Warden;
 import storage.FileManagerWarden;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WardenManager implements IGeneralManager<Warden> {
-    private List<Warden> wardenList = new ArrayList<>();
+public class WardenManager implements IGeneralManager<Warden>, Serializable {
+    private List<Warden> wardenList;
     private FileManagerWarden fileManagerWarden;
 
     public List<Warden> getWardenList() {
@@ -72,4 +73,11 @@ public class WardenManager implements IGeneralManager<Warden> {
         }
     }
 
+    public FileManagerWarden getFileManagerWarden() {
+        return fileManagerWarden;
+    }
+
+    public void setFileManagerWarden(FileManagerWarden fileManagerWarden) {
+        this.fileManagerWarden = fileManagerWarden;
+    }
 }

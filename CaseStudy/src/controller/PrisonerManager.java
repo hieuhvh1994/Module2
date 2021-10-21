@@ -4,10 +4,11 @@ import model.Prisoner;
 import storage.FileManagerPrisoner;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrisonerManager implements IGeneralManager<Prisoner> {
+public class PrisonerManager implements IGeneralManager<Prisoner>, Serializable {
     private List<Prisoner> prisonerList = new ArrayList<>();
     private FileManagerPrisoner fileManagerPrisoner;
 
@@ -28,7 +29,7 @@ public class PrisonerManager implements IGeneralManager<Prisoner> {
     @Override
     public void add(Prisoner prisoner) throws IOException {
         prisonerList.add(prisoner);
-        fileManagerPrisoner.writeFile(prisonerList);
+//        fileManagerPrisoner.writeFile(prisonerList);
     }
 
     @Override
@@ -75,5 +76,11 @@ public class PrisonerManager implements IGeneralManager<Prisoner> {
 
     }
 
+    public FileManagerPrisoner getFileManagerPrisoner() {
+        return fileManagerPrisoner;
+    }
 
+    public void setFileManagerPrisoner(FileManagerPrisoner fileManagerPrisoner) {
+        this.fileManagerPrisoner = fileManagerPrisoner;
+    }
 }

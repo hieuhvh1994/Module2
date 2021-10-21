@@ -1,12 +1,13 @@
 package storage;
 
 import model.Camp;
+import model.CellRoom;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileManagerCamp implements AbstractFileManager<Camp>{
+public class FileManagerCamp implements AbstractFileManager<Camp>, Serializable{
     private static FileManagerCamp fileManagerCamp;
     private FileManagerCamp() {
 
@@ -20,29 +21,47 @@ public class FileManagerCamp implements AbstractFileManager<Camp>{
     }
     @Override
     public void writeFile(List<Camp> camps) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream("camp_list.txt");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(camps);
-        objectOutputStream.close();
-        fileOutputStream.close();
+        if (camps == null) {
+            camps = new ArrayList<>();
+        }
+        File file = new File("camp_list.txt");
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(camps);
+            oos.close();
+            fos.close();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public List<Camp> readFile() throws IOException, ClassNotFoundException {
+        List<Camp> campList = new ArrayList<>();
         File file = new File("camp_list.txt");
         if (!file.exists()) {
-            file.createNewFile();
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        if(file.length() > 0) {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            Object object = objectInputStream.readObject();
-            List<Camp> list = (List<Camp>) object;
-            objectInputStream.close();
-            fileInputStream.close();
-            return list;
-        } else {
+        if (file.length() == 0) {
             return new ArrayList<>();
         }
+        try {
+            FileInputStream is = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(is);
+            campList = (List<Camp>) ois.readObject();
+            ois.close();
+            is.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return campList;
     }
 }

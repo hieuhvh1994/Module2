@@ -1,5 +1,7 @@
 package model;
 
+import authentication.Account;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -10,14 +12,16 @@ public class Warden implements Serializable {
     private int id;
     private LocalDate workingStartDate;
     private String position;
+    private Account account;
 
-    public Warden(String name, String address, LocalDate dob, int id, LocalDate workingStartDate, String position) {
+    public Warden(String name, String address, LocalDate dob, int id, LocalDate workingStartDate, String position, Account account) {
         this.name = name;
         this.address = address;
         this.dob = dob;
         this.id = id;
         this.workingStartDate = workingStartDate;
         this.position = position;
+        this.account = account;
     }
 
     public String getName() {
@@ -66,6 +70,14 @@ public class Warden implements Serializable {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override

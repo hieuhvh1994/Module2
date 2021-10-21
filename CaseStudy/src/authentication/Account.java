@@ -3,11 +3,11 @@ package authentication;
 public class Account implements AbstractUser {
     private String username;
     private String password;
-    private String role;
+    private AccountLevel role;
     private String fullName;
     private int id;
 
-    public Account(String username, String password, String role, String fullName, int id) {
+    public Account(String username, String password, AccountLevel role, String fullName, int id) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -37,12 +37,12 @@ public class Account implements AbstractUser {
     }
 
     @Override
-    public String getRole() {
+    public AccountLevel getRole() {
         return role;
     }
 
     @Override
-    public void setRole(String role) {
+    public void setRole(AccountLevel role) {
         this.role = role;
     }
 
