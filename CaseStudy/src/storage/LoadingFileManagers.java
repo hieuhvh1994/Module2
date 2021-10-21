@@ -29,6 +29,8 @@ public class LoadingFileManagers implements Serializable {
     public static CampManager campManager = new CampManager();
     public static PrisonManager prisonManager = new PrisonManager();
 
+    public static Account loggingAccount = null;
+
 
 
     public static void loadManagementFiles() {
@@ -59,6 +61,8 @@ public class LoadingFileManagers implements Serializable {
 
         campManager.setCampList(camps);
         campManager.setFileManagerCamp(fileManagerCamp);
+
+        prisonManager.setCamps(camps);
     }
 
 

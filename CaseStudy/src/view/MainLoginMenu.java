@@ -4,13 +4,14 @@ import authentication.Account;
 import authentication.AccountLevel;
 import storage.LoadingFileManagers;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MainLoginMenu {
-    public static void enable() {
+    public static void enable() throws IOException {
 
         while (true) {
-            System.out.println("Thanh Xuan Prison System ");
+            System.out.println("Thanh Xuan Prison Login System ");
             System.out.println("--------------------------");
 
             Scanner usernameScanner = new Scanner(System.in);
@@ -26,10 +27,13 @@ public class MainLoginMenu {
                     if (account.getRole().equals(AccountLevel.LEADER)) {
                         System.out.println("---------------------------");
                         System.out.println("MOVING TO LEADER MENU....");
+                        LoadingFileManagers.loggingAccount = account;
+                        LeaderMenu.enable();
 
                     } else if (account.getRole().equals(AccountLevel.STAFF)) {
                         System.out.println("---------------------------");
                         System.out.println("MOVING TO STAFF MENU....");
+                        LoadingFileManagers.loggingAccount = account;
                     }
                 } else {
                     System.out.println("Wrong password!!");

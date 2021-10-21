@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Camp implements Serializable {
@@ -14,6 +15,13 @@ public class Camp implements Serializable {
         this.id = id;
         this.cellRooms = cellRooms;
         this.warden = warden;
+    }
+
+    public Camp(String name, int id) {
+        this.name = name;
+        this.id = id;
+        this.cellRooms = new ArrayList<>();
+        this.warden = null;
     }
 
     public String getName() {
@@ -61,4 +69,6 @@ public class Camp implements Serializable {
     public void addNewCellRoom(CellRoom cellRoom) {
         cellRooms.add(cellRoom);
     }
+
+
 }

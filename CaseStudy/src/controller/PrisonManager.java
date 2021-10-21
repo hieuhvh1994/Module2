@@ -45,12 +45,18 @@ PrisonManager implements Serializable {
         this.wardenLeader = wardenLeader;
     }
 
+    public void getCampsName() {
+        for (Camp c: camps) {
+            System.out.println(c.getName());
+        }
+    }
+
     @Override
     public String toString() {
-        return "Prison{" +
-                "name='" + name + '\'' +
-                ", camps=" + camps +
-                ", wardenLeader=" + wardenLeader +
-                '}';
+        System.out.println("Prison " + name);
+        System.out.println("Camp List: ");
+        getCampsName();
+        System.out.println("Warden Leader: " + wardenLeader.getName());
+        return "";
     }
 }

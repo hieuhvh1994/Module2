@@ -40,7 +40,7 @@ public class WardenManager implements IGeneralManager<Warden>, Serializable {
     }
 
     @Override
-    public void deleteById(int index) throws IOException {
+    public void deleteByIndex(int index) throws IOException {
         wardenList.remove(index);
         fileManagerWarden.writeFile(wardenList);
     }
@@ -68,8 +68,10 @@ public class WardenManager implements IGeneralManager<Warden>, Serializable {
 
     @Override
     public void showAllList() {
+        int i = 1;
         for (Warden w : wardenList) {
-            System.out.println(w.toString());
+            System.out.println(i + ". " + w.toString());
+            i++;
         }
     }
 

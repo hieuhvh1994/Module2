@@ -48,15 +48,16 @@ public class CampManager implements IGeneralManager<Camp>, Serializable {
     }
 
     @Override
-    public void deleteById(int index) throws IOException {
+    public void deleteByIndex(int index) throws IOException {
         campList.remove(campList.get(index));
         fileManagerCamp.writeFile(campList);
     }
 
     @Override
     public void showAllList() {
+        int i = 1;
         for (Camp c : campList) {
-            System.out.println(c.toString());
+            System.out.println(i + ". " + c.toString());
         }
     }
 
@@ -68,5 +69,7 @@ public class CampManager implements IGeneralManager<Camp>, Serializable {
         }
         fileManagerCamp.writeFile(campList);
     }
+
+
 
 }

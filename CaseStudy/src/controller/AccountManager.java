@@ -46,7 +46,7 @@ public class AccountManager implements IGeneralManager<Account>, Serializable {
     }
 
     @Override
-    public void deleteById(int index) throws IOException {
+    public void deleteByIndex(int index) throws IOException {
         accountList.remove(index);
         fileManagerAccount.writeFile(accountList);
     }

@@ -29,7 +29,7 @@ public class PrisonerManager implements IGeneralManager<Prisoner>, Serializable 
     @Override
     public void add(Prisoner prisoner) throws IOException {
         prisonerList.add(prisoner);
-//        fileManagerPrisoner.writeFile(prisonerList);
+        fileManagerPrisoner.writeFile(prisonerList);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class PrisonerManager implements IGeneralManager<Prisoner>, Serializable 
 
 
     @Override
-    public void deleteById(int index) throws IOException {
+    public void deleteByIndex(int index) throws IOException {
         prisonerList.remove(index);
         fileManagerPrisoner.writeFile(prisonerList);
     }
@@ -69,8 +69,10 @@ public class PrisonerManager implements IGeneralManager<Prisoner>, Serializable 
 
     @Override
     public void showAllList() {
+        int i = 1;
         for (Prisoner p : prisonerList) {
-            System.out.println(p.toString());
+            System.out.println(i +". " + p.toString());
+            i++;
         }
 
 

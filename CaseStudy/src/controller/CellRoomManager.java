@@ -47,7 +47,7 @@ public class CellRoomManager implements IGeneralManager<CellRoom>, Serializable 
     }
 
     @Override
-    public void deleteById(int index) throws IOException {
+    public void deleteByIndex(int index) throws IOException {
         cellRoomList.remove(index);
         fileManagerCellRoom.writeFile(cellRoomList);
     }
@@ -62,21 +62,13 @@ public class CellRoomManager implements IGeneralManager<CellRoom>, Serializable 
         return cellRoom;
     }
 
-    public void searchByRoomLevel(String roomLevel) {
-        CellRoom cellRoom = null;
-        for (CellRoom c : cellRoomList) {
-            if (c.getRoomLevel().equals(roomLevel)) {
-                cellRoom = c;
-                System.out.println(cellRoom);
-            }
-        }
-    }
-
 
     @Override
     public void showAllList() {
+        int i = 1;
         for (CellRoom c : cellRoomList) {
-            System.out.println(c.toString());
+            System.out.println(i + ". " + c.toString());
+            i++;
         }
     }
 
