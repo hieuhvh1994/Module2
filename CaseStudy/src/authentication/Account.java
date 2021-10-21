@@ -1,6 +1,8 @@
 package authentication;
 
-public class Account implements AbstractUser {
+import java.io.Serializable;
+
+public class Account implements AbstractUser, Serializable {
     private String username;
     private String password;
     private AccountLevel role;
