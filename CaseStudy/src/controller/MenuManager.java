@@ -466,22 +466,31 @@ public class MenuManager {
         LoadingFileManagers.wardenManager.showAllList();
         System.out.println("0. Exit!!");
         System.out.println("--------------");
+
+        //Choose the warden to update information
         System.out.println("Enter the index of the warden to update information: ");
         Scanner choiceScanner = new Scanner(System.in);
         int choice = choiceScanner.nextInt();
 
         if (choice !=0) {
             System.out.println("Updating the information of the warden: ");
+
+            //Name
             Scanner inputName = new Scanner(System.in);
             System.out.println("Enter the name of the warden: ");
             String name = inputName.nextLine();
 
+
+            //Address
             Scanner inputAddress = new Scanner(System.in);
             System.out.println("Enter the address of the warden: ");
             String address = inputAddress.nextLine();
 
+            //ID
             Scanner inputId = new Scanner(System.in);
             System.out.println("Enter the ID of the warden: ");
+
+            //Check ID is unique
             int loopId = -1;
             int id = inputId.nextInt();
 
@@ -502,6 +511,7 @@ public class MenuManager {
                 id = inputDiffId.nextInt();
             }
 
+            //DOB
             Scanner inputYearOB = new Scanner(System.in);
             System.out.println("Enter the Year of Birth of the warden: ");
             int yearOB = inputYearOB.nextInt();
@@ -517,6 +527,7 @@ public class MenuManager {
             LocalDate dob = LocalDate.of(yearOB, monthOB, dayOB);
 
 
+            //WSD
             Scanner inputYearWSD = new Scanner(System.in);
             System.out.println("Enter the Year of Working Start Date of the warden: ");
             int yearWSD = inputYearWSD.nextInt();
@@ -531,12 +542,14 @@ public class MenuManager {
 
             LocalDate wsd = LocalDate.of(yearWSD, monthWSD, dayWSD);
 
-
+            //Creating new account for the warden
             System.out.println("Creating account for the warden...");
 
-
+            //username
             Scanner inputUsername = new Scanner(System.in);
             System.out.println("Enter username: ");
+
+            //Check the username is unique
             int loop = -1;
             String username = inputUsername.nextLine();
             for (int i =0; i<LoadingFileManagers.accountManager.getAccountList().size(); i++) {
@@ -556,10 +569,12 @@ public class MenuManager {
                 username = inputDiffUsername.nextLine();
             }
 
+            //Password
             Scanner inputPassword = new Scanner(System.in);
             System.out.println("Enter password: ");
             String password = inputPassword.nextLine();
 
+            //Role
             System.out.println();
             Scanner inputRole = new Scanner(System.in);
             System.out.println("1. Leader");
@@ -567,6 +582,7 @@ public class MenuManager {
             System.out.println("Enter the index of role:");
             int roleChoice = inputRole.nextInt();
 
+            //Set role and position
             String position;
             AccountLevel role;
             if (roleChoice == 1) {
@@ -585,6 +601,7 @@ public class MenuManager {
             int oldIdWarden = LoadingFileManagers.wardenManager.getWardenList().get(choice-1).getId();
             LoadingFileManagers.wardenManager.update(choice-1, warden);
 
+            //Delete old account
             for (int i = 0; i< LoadingFileManagers.accountManager.getAccountList().size(); i++) {
                 if (LoadingFileManagers.accountManager.getAccountList().get(i).getId() == oldIdWarden) {
                     LoadingFileManagers.accountManager.deleteByIndex(i);
@@ -592,7 +609,7 @@ public class MenuManager {
             }
 
 
-
+            //Change the role and position to other accounts and wardens
             int oldIdLeader = -1;
             if (account.getRole() == AccountLevel.LEADER) {
                 for (Account a: LoadingFileManagers.accountManager.getAccountList()) {
@@ -607,11 +624,12 @@ public class MenuManager {
                         w.setPosition("Staff");
                     }
                 }
-
+            //Set new account and warden
                 LoadingFileManagers.prisonManager.setWardenLeader(warden);
             }
 
             LoadingFileManagers.accountManager.add(account);
+
 
             System.out.println("Successful updated!!");
         } else {
@@ -621,10 +639,13 @@ public class MenuManager {
 
     }
 
+    //Delete Warden
     public static void deleteWarden() throws IOException {
         LoadingFileManagers.wardenManager.showAllList();
         System.out.println("0. Exit!!");
         System.out.println("--------------");
+
+        //Get the warden to delete
         System.out.println("Enter the index of the warden to delete: ");
         Scanner choiceScanner = new Scanner(System.in);
         int choice = choiceScanner.nextInt();
@@ -644,6 +665,7 @@ public class MenuManager {
 
             LoadingFileManagers.wardenManager.deleteByIndex(choice-1);
 
+            //Check is there a leader in warden list or not
             boolean haveLeader = false;
             for (Account a : LoadingFileManagers.accountManager.getAccountList()) {
                 if (a.getRole() == AccountLevel.LEADER) {
@@ -651,6 +673,8 @@ public class MenuManager {
                     break;
                 }
             }
+
+            //Change role leader to another warden if there is no leader in warden list
             if (LoadingFileManagers.wardenManager.getWardenList().size() > 0 || !haveLeader) {
                 LoadingFileManagers.wardenManager.getWardenList().get(0).setPosition("Leader");
                 for (Account a : LoadingFileManagers.accountManager.getAccountList()) {
@@ -660,6 +684,7 @@ public class MenuManager {
                 }
             }
 
+            //Print out the result.
             System.out.println("Successful removed!!");
         } else {
             LeaderMenu.enable();
@@ -667,11 +692,14 @@ public class MenuManager {
 
     }
 
+    //Search Warden By ID
     public static void searchWardenByID() {
+        //Enter the Warden ID
         System.out.println("Enter the ID of the Warden: ");
         Scanner inputID = new Scanner(System.in);
         int idSearch = inputID.nextInt();
 
+        //Check the id in the warden list
         Warden result = null;
         for (Warden w : LoadingFileManagers.wardenManager.getWardenList()) {
             if (w.getId() == idSearch) {
@@ -680,6 +708,7 @@ public class MenuManager {
             }
         }
 
+        //Print out result
         if (result != null) {
             System.out.println(result);
         } else {
@@ -689,7 +718,9 @@ public class MenuManager {
 
     }
 
+    //Search Warden By Name
     public static void searchWardenByName() {
+        //Get Input
         System.out.println("Enter the name of the Warden: ");
         Scanner inputName = new Scanner(System.in);
         String nameSearch = inputName.nextLine();
