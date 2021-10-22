@@ -933,7 +933,7 @@ public class MenuManager {
         }
 
         if (result != null) {
-            System.out.println(result);
+            System.out.println(result.toString());
         } else {
             System.out.println("There is no cell room matches with this Room Number!!");
         }

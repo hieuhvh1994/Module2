@@ -127,6 +127,7 @@ public class LeaderMenu {
 
                 case 19:
                     MenuManager.searchCellRoomByNumber();
+                    break;
 
                 case 20:
                     MenuManager.showInfoOfCamps();
