@@ -54,7 +54,7 @@ public class CellRoom implements Serializable {
         return "CellRoom: " + "\n" +
                 "Room Number: " + number + "\n" +
                 "Number Of Beds: " + numberOfBeds + "\n" +
-                "Prisoner: " + prisoners + "\n";
+                "Prisoner: " + prisoners + "\n\n";
 
     }
 }

@@ -62,7 +62,7 @@ public class Camp implements Serializable {
                 "Name: " + name + '\n' +
                 "ID: " + id + "\n" +
                 "Cell Room: " + cellRooms + "\n" +
-                "Warden: " + warden + "\n";
+                "Warden: " + warden + "\n\n";
     }
 
     public void addNewCellRoom(CellRoom cellRoom) {

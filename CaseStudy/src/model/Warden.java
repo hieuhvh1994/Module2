@@ -89,6 +89,6 @@ public class Warden implements Serializable {
                 "ID: " + id + "\n" +
                 "Working Start Date: " + workingStartDate + "\n" +
                 "Position: " + position + '\n';
-        
+
     }
 }
