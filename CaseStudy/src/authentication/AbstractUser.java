@@ -1,5 +1,6 @@
 package authentication;
 
+//Interface AbstractUser
 public interface AbstractUser {
 
     public String getUsername();

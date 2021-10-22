@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+//Class Cell Room Manager
 public class CellRoomManager implements IGeneralManager<CellRoom>, Serializable {
     private List<CellRoom> cellRoomList = new ArrayList<>();
     private FileManagerCellRoom fileManagerCellRoom;
@@ -72,6 +73,7 @@ public class CellRoomManager implements IGeneralManager<CellRoom>, Serializable 
         }
     }
 
+    //Add new prisoner to Cell Room
     public void addNewPrisoner(Prisoner prisoner, CellRoom cellRoom) throws IOException {
         for (CellRoom c : cellRoomList) {
             if (c.getNumber() == cellRoom.getNumber()) {

@@ -2,6 +2,7 @@ package authentication;
 
 import java.io.Serializable;
 
+//Class Account
 public class Account implements AbstractUser, Serializable {
     private String username;
     private String password;

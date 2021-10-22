@@ -15,24 +15,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//Class Menu Manager
 public class MenuManager {
-    //Prisoner Functions
+    //----------------Prisoner Functions---------------------
+    //Show information of Prisoners
     public static void showInfoOfPrisoners() {
         LoadingFileManagers.prisonerManager.showAllList();
     }
 
+    //Add new Prisoner to Prisoner List
     public static void addNewPrisoner() throws IOException {
+        //Scanner Inputs of New Information of new Prisoner
         System.out.println("Adding new prisoner: ");
+
+        //Name
         Scanner inputName = new Scanner(System.in);
         System.out.println("Enter the name of the prisoner: ");
         String name = inputName.nextLine();
 
+        //Address
         Scanner inputAddress = new Scanner(System.in);
         System.out.println("Enter the address of the prisoner: ");
         String address = inputAddress.nextLine();
 
+        //ID
         Scanner inputId = new Scanner(System.in);
         System.out.println("Enter the id of the prisoner: ");
+        //Check the ID is unique
         int loopId = -1;
         int id = inputId.nextInt();
 
@@ -53,6 +62,7 @@ public class MenuManager {
             id = inputDiffId.nextInt();
         }
 
+        //DOB
         Scanner inputYearOB = new Scanner(System.in);
         System.out.println("Enter the Year of Birth of the prisoner: ");
         int yearOB = inputYearOB.nextInt();
@@ -67,14 +77,19 @@ public class MenuManager {
 
         LocalDate dob = LocalDate.of(yearOB, monthOB, dayOB);
 
+
+        //Crime Level
         Scanner inputCrimeLevel = new Scanner(System.in);
         System.out.println("Enter the crime level of the prisoner: ");
         String crimeLevel = inputCrimeLevel.nextLine();
 
+
+        //Years in Prison Sentence
         Scanner inputYearOP = new Scanner(System.in);
         System.out.println("Enter the sentence (in year) of the prisoner: ");
         int yearOP = inputYearOP.nextInt();
 
+        //Date Of Execution
         Scanner inputYearOE = new Scanner(System.in);
         System.out.println("Enter the Year of Execution of the prisoner: ");
         int yearOE = inputYearOE.nextInt();
@@ -89,32 +104,44 @@ public class MenuManager {
 
         LocalDate doe = LocalDate.of(yearOE, monthOE, dayOE);
 
+        //Adding the new Prisoner to the Prisoner Manager List
         LoadingFileManagers.prisonerManager.add(new Prisoner(name, address, id, dob, crimeLevel, yearOP, doe));
 
+        //Print out the result
         System.out.println("Successful added!!");
 
     }
 
+    //Update the Information of the Prisoner
     public static void updateInfoPrisoner() throws IOException {
+        //Print the list of prisoners
         LoadingFileManagers.prisonerManager.showAllList();
         System.out.println("0. Exit!!");
         System.out.println("--------------");
+
+        //Get the choice of the prisoner
         System.out.println("Enter the index of the prisoner to update information: ");
         Scanner choiceScanner = new Scanner(System.in);
         int choice = choiceScanner.nextInt();
 
         if (choice != 0) {
             System.out.println("Updating the information of the prisoner: ");
+
+            //Get Inputs to update information of the prisoner
+            //Name
             Scanner inputName = new Scanner(System.in);
             System.out.println("Enter the name of the prisoner: ");
             String name = inputName.nextLine();
 
+            //Address
             Scanner inputAddress = new Scanner(System.in);
             System.out.println("Enter the address of the prisoner: ");
             String address = inputAddress.nextLine();
 
+            //ID
             Scanner inputId = new Scanner(System.in);
             System.out.println("Enter the id of the prisoner: ");
+            //Check the ID is unique
             int loopId = -1;
             int id = inputId.nextInt();
 
@@ -135,6 +162,7 @@ public class MenuManager {
                 id = inputDiffId.nextInt();
             }
 
+            //DOB
             Scanner inputYearOB = new Scanner(System.in);
             System.out.println("Enter the Year of Birth of the prisoner: ");
             int yearOB = inputYearOB.nextInt();
@@ -149,14 +177,17 @@ public class MenuManager {
 
             LocalDate dob = LocalDate.of(yearOB, monthOB, dayOB);
 
+            //Crime Level
             Scanner inputCrimeLevel = new Scanner(System.in);
             System.out.println("Enter the crime level of the prisoner: ");
             String crimeLevel = inputCrimeLevel.nextLine();
 
+            //Years in Prison Sentence
             Scanner inputYearOP = new Scanner(System.in);
             System.out.println("Enter the sentence (in year) of the prisoner: ");
             int yearOP = inputYearOP.nextInt();
 
+            //Date Of Execution
             Scanner inputYearOE = new Scanner(System.in);
             System.out.println("Enter the Year of Execution of the prisoner: ");
             int yearOE = inputYearOE.nextInt();
@@ -171,11 +202,13 @@ public class MenuManager {
 
             LocalDate doe = LocalDate.of(yearOE, monthOE, dayOE);
 
+            //Updating the new prisoner to the list Prisoners
             Prisoner oldPrisoner = LoadingFileManagers.prisonerManager.getPrisonerList().get(choice-1);
             Prisoner newPrisoner = new Prisoner(name, address, id, dob, crimeLevel, yearOP, doe);
 
             LoadingFileManagers.prisonerManager.update(choice-1 ,newPrisoner);
 
+            //Updating the prisoner in the cell room list
             int prisonerPos = -1;
             for (int i=0; i<  LoadingFileManagers.cellRoomManager.getCellRoomList().size();i++ ) {
                 if (LoadingFileManagers.cellRoomManager.getCellRoomList().get(i).getPrisoners().contains(oldPrisoner)) {
@@ -185,16 +218,19 @@ public class MenuManager {
                 }
             }
 
-
+            //Print out the result
             System.out.println("Successful updated!!");
         } else {
+            //Exit
             LeaderMenu.enable();
         }
 
 
     }
 
+    //Delete prisoner
     public static void deletePrisoner() throws IOException {
+        //Print out Prisoner list
         LoadingFileManagers.prisonerManager.showAllList();
         System.out.println("0. Exit!!");
         System.out.println("--------------");
@@ -203,20 +239,26 @@ public class MenuManager {
         int choice = choiceScanner.nextInt();
 
         if (choice !=0) {
+            //Remove prisoner from the prisoner list
             LoadingFileManagers.prisonerManager.deleteByIndex(choice-1);
 
+            //Print the result
             System.out.println("Successful removed!!");
         } else {
+            //Exit
             LeaderMenu.enable();
         }
 
     }
 
+    //Search Prisoner By ID
     public static void searchPrisonerByID() {
+        //Input Search ID
         System.out.println("Enter the ID of the Prisoner: ");
         Scanner inputID = new Scanner(System.in);
         int idSearch = inputID.nextInt();
 
+        //Find the Prisoner
         Prisoner result = null;
         for (Prisoner c : LoadingFileManagers.prisonerManager.getPrisonerList()) {
             if (c.getId() == idSearch) {
@@ -225,6 +267,7 @@ public class MenuManager {
             }
         }
 
+        //Result
         if (result != null) {
             System.out.println(result);
         } else {
@@ -233,11 +276,14 @@ public class MenuManager {
 
     }
 
+    //Search Prisoner By Name
     public static void searchPrisonerByName() {
+        //Input search name
         System.out.println("Enter the name of the Prisoner: ");
         Scanner inputName = new Scanner(System.in);
         String nameSearch = inputName.nextLine();
 
+        //Find the prisoner
         Prisoner result = null;
         for (Prisoner c : LoadingFileManagers.prisonerManager.getPrisonerList()) {
             if (c.getName().equals(nameSearch)) {
@@ -246,6 +292,7 @@ public class MenuManager {
             }
         }
 
+        //Print out the result
         if (result != null) {
             System.out.println(result);
         } else {
@@ -254,23 +301,33 @@ public class MenuManager {
     }
 
 
-    //Warden Functions
+    //----------------------Warden Functions-------------------------------
+    //Show all information of Warden List
     public static void showInfoOfWardens() {
         LoadingFileManagers.wardenManager.showAllList();
     }
 
+
+    //Add new warden
     public static void addNewWarden() throws IOException {
         System.out.println("Adding new warden: ");
+
+        //Inputs of the new warden's information
+        //Name
         Scanner inputName = new Scanner(System.in);
         System.out.println("Enter the name of the warden: ");
         String name = inputName.nextLine();
 
+        //Address
         Scanner inputAddress = new Scanner(System.in);
         System.out.println("Enter the address of the warden: ");
         String address = inputAddress.nextLine();
 
+        //ID
         Scanner inputId = new Scanner(System.in);
         System.out.println("Enter the id of the warden: ");
+
+        //Check id is unique
         int loopId = -1;
         int id = inputId.nextInt();
 
@@ -291,6 +348,7 @@ public class MenuManager {
             id = inputDiffId.nextInt();
         }
 
+        //DOB
         Scanner inputYearOB = new Scanner(System.in);
         System.out.println("Enter the Year of Birth of the warden: ");
         int yearOB = inputYearOB.nextInt();
@@ -305,7 +363,7 @@ public class MenuManager {
 
         LocalDate dob = LocalDate.of(yearOB, monthOB, dayOB);
 
-
+        //Working Start Date
         Scanner inputYearWSD = new Scanner(System.in);
         System.out.println("Enter the Year of Working Start Date of the warden: ");
         int yearWSD = inputYearWSD.nextInt();
@@ -320,16 +378,19 @@ public class MenuManager {
 
         LocalDate wsd = LocalDate.of(yearWSD, monthWSD, dayWSD);
 
+        //Position
         Scanner inputPosition = new Scanner(System.in);
         System.out.println("Enter the position of the warden: ");
         String position = inputPosition.nextLine();
 
-
+        //Creating Account for the new Warden
         System.out.println("Creating account for the warden...");
 
-
+        //username
         Scanner inputUsername = new Scanner(System.in);
         System.out.println("Enter username: ");
+
+        //Check the username is unique
         int loop = -1;
         String username = inputUsername.nextLine();
         for (int i =0; i<LoadingFileManagers.accountManager.getAccountList().size(); i++) {
@@ -349,10 +410,12 @@ public class MenuManager {
             username = inputDiffUsername.nextLine();
         }
 
+        //Password
         Scanner inputPassword = new Scanner(System.in);
         System.out.println("Enter password: ");
         String password = inputPassword.nextLine();
 
+        //Role
         Scanner inputRole = new Scanner(System.in);
         System.out.println("1. Leader");
         System.out.println("2. Staff");
@@ -364,15 +427,17 @@ public class MenuManager {
             role = AccountLevel.LEADER;
         }
 
-
+        //Adding new Warden to the Warden List and new account to the Account List
         Account account = new Account(username, password, role, name, id);
         Warden warden = new Warden(name, address, dob, id, wsd, position, account);
 
         LoadingFileManagers.wardenManager.add(warden);
         LoadingFileManagers.accountManager.add(account);
 
+        //Because there is only one Leader account is existed then we need to change the role of other account to STAFF
         int oldIdLeader = -1;
         if (account.getRole() == AccountLevel.LEADER) {
+            //Change the role of the Account
             for (Account a: LoadingFileManagers.accountManager.getAccountList()) {
                 if (a.getRole() == AccountLevel.LEADER) {
                     a.setRole(AccountLevel.STAFF);
@@ -380,6 +445,7 @@ public class MenuManager {
                 }
             }
 
+            //Change the position of the warden
             for (Warden w : LoadingFileManagers.wardenManager.getWardenList()) {
                 if (w.getId() == oldIdLeader) {
                     w.setPosition("Staff");
@@ -389,10 +455,13 @@ public class MenuManager {
             LoadingFileManagers.prisonManager.setWardenLeader(warden);
         }
 
+        //Print out the result
         System.out.println("Successful added!!");
 
     }
 
+
+    //Update information of the warden
     public static void updateInfoWarden() throws IOException {
         LoadingFileManagers.wardenManager.showAllList();
         System.out.println("0. Exit!!");

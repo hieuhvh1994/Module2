@@ -1,5 +1,7 @@
 package authentication;
 
+
+//class AccountFactory for Factory Pattern of Account Types
 public class AccountFactory {
     public static Account getAccount(AccountLevel accountLevel, String username, String password, String fullName, int id) {
         switch (accountLevel) {

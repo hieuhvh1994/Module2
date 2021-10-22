@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+//Class CampManager
 public class CampManager implements IGeneralManager<Camp>, Serializable {
     private List<Camp> campList = new ArrayList<>();
     private FileManagerCamp fileManagerCamp;
@@ -61,6 +62,7 @@ public class CampManager implements IGeneralManager<Camp>, Serializable {
         }
     }
 
+    //Add new CellRoom
     public void addNewCellRoom(CellRoom cellRoom, Camp camp) throws IOException {
         for (Camp c : campList) {
             if (c.getId() == camp.getId()) {

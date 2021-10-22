@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
+//Class AccountManager
 public class AccountManager implements IGeneralManager<Account>, Serializable {
     private List<Account> accountList;
     private FileManagerAccount fileManagerAccount;
@@ -58,6 +59,7 @@ public class AccountManager implements IGeneralManager<Account>, Serializable {
         }
     }
 
+    // Search username in Account List
     public Account searchByUsername(String username) {
         Account account = null;
         for (Account a : accountList) {
