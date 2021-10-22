@@ -76,6 +76,7 @@ public class LeaderMenu {
 
                 case 6:
                     MenuManager.searchPrisonerByName();
+                    break;
 
                 case 7:
                     MenuManager.showInfoOfWardens();

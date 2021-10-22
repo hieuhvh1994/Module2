@@ -47,6 +47,7 @@ public class StaffMenu {
 
                 case 3:
                     MenuManager.searchPrisonerByName();
+                    break;
 
                 case 4:
                     MenuManager.showInfoOfWardens();
@@ -66,6 +67,7 @@ public class StaffMenu {
 
                 case 8:
                     MenuManager.searchCellRoomByNumber();
+                    break;
 
                 case 9:
                     MenuManager.showInfoOfCamps();
