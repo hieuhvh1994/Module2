@@ -34,6 +34,7 @@ public class MainLoginMenu {
                         System.out.println("---------------------------");
                         System.out.println("MOVING TO STAFF MENU....");
                         LoadingFileManagers.loggingAccount = account;
+                        StaffMenu.enable();
                     }
                 } else {
                     System.out.println("Wrong password!!");

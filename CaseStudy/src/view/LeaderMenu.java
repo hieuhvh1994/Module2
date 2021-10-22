@@ -1,6 +1,6 @@
 package view;
 
-import authentication.MenuManager;
+import controller.MenuManager;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -15,27 +15,35 @@ public class LeaderMenu {
             System.out.println("2. Add new prisoner.");
             System.out.println("3. Update information of prisoner.");
             System.out.println("4. Delete prisoner.");
+            System.out.println("5. Search prisoner By ID.");
+            System.out.println("6. Search prisoner By Name.");
             System.out.println("------------------------------------");
-            System.out.println("5. Show information of wardens.");
-            System.out.println("6. Add new warden.");
-            System.out.println("7. Update information of warden.");
-            System.out.println("8. Delete warden.");
+            System.out.println("7. Show information of wardens.");
+            System.out.println("8. Add new warden.");
+            System.out.println("9. Update information of warden.");
+            System.out.println("10. Delete warden.");
+            System.out.println("11. Search warden By ID.");
+            System.out.println("12. Search warden By Name.");
+
             System.out.println("------------------------------------");
-            System.out.println("9. Show information of cell rooms.");
-            System.out.println("10. Add new cell room.");
-            System.out.println("11. Update information of cell room.");
-            System.out.println("12. Delete cell room.");
-            System.out.println("13. Add prisoner to cell room.");
-            System.out.println("14. Remove prisoner of cell room.");
+            System.out.println("13. Show information of cell rooms.");
+            System.out.println("14. Add new cell room.");
+            System.out.println("15. Update information of cell room.");
+            System.out.println("16. Delete cell room.");
+            System.out.println("17. Add prisoner to cell room.");
+            System.out.println("18. Remove prisoner of cell room.");
+            System.out.println("19. Search cell room by Room Number.");
             System.out.println("------------------------------------");
-            System.out.println("15. Show information of camps.");
-            System.out.println("16. Add new camp.");
-            System.out.println("17. Update information of camp.");
-            System.out.println("18. Delete camp.");
-            System.out.println("19. Add cell room to camp.");
-            System.out.println("20. Remove cell room of camp.");
+            System.out.println("20. Show information of camps.");
+            System.out.println("21. Add new camp.");
+            System.out.println("22. Update information of camp.");
+            System.out.println("23. Delete camp.");
+            System.out.println("24. Add cell room to camp.");
+            System.out.println("25. Remove cell room of camp.");
+            System.out.println("26. Set warden for the camp.");
+            System.out.println("27. Search camp by ID.");
             System.out.println("------------------------------------");
-            System.out.println("21. Change password of this account.");
+            System.out.println("28. Change password of this account.");
             System.out.println("------------------------------------");
             System.out.println("0. Exit!");
             System.out.println();
@@ -63,68 +71,96 @@ public class LeaderMenu {
                     break;
 
                 case 5:
-                    MenuManager.showInfoOfWardens();
+                    MenuManager.searchPrisonerByID();
                     break;
 
                 case 6:
-                    MenuManager.addNewWarden();
-                    break;
+                    MenuManager.searchPrisonerByName();
 
                 case 7:
-                    MenuManager.updateInfoWarden();
+                    MenuManager.showInfoOfWardens();
                     break;
 
                 case 8:
-                    MenuManager.deleteWarden();
+                    MenuManager.addNewWarden();
                     break;
 
                 case 9:
-                    MenuManager.showInfoOfCellRooms();
+                    MenuManager.updateInfoWarden();
                     break;
 
                 case 10:
-                    MenuManager.addNewCellRoom();
+                    MenuManager.deleteWarden();
                     break;
 
                 case 11:
-                    MenuManager.updateInfoCellRoom();
+                    MenuManager.searchWardenByID();
                     break;
 
                 case 12:
-                    MenuManager.deleteCellRoom();
+                    MenuManager.searchWardenByName();
                     break;
 
                 case 13:
-                    MenuManager.addPrisonerToCellRoom();
+                    MenuManager.showInfoOfCellRooms();
                     break;
 
                 case 14:
-                    MenuManager.removePrisonerFromCellRoom();
+                    MenuManager.addNewCellRoom();
+                    break;
 
                 case 15:
-                    MenuManager.showInfoOfCamps();
+                    MenuManager.updateInfoCellRoom();
                     break;
 
                 case 16:
-                    MenuManager.addNewCamp();
+                    MenuManager.deleteCellRoom();
                     break;
 
                 case 17:
-                    MenuManager.updateInfoCamp();
+                    MenuManager.addPrisonerToCellRoom();
                     break;
 
                 case 18:
-                    MenuManager.deleteCamp();
+                    MenuManager.removePrisonerFromCellRoom();
                     break;
 
                 case 19:
+                    MenuManager.searchCellRoomByNumber();
+
+                case 20:
+                    MenuManager.showInfoOfCamps();
+                    break;
+
+                case 21:
+                    MenuManager.addNewCamp();
+                    break;
+
+                case 22:
+                    MenuManager.updateInfoCamp();
+                    break;
+
+                case 23:
+                    MenuManager.deleteCamp();
+                    break;
+
+                case 24:
                     MenuManager.addCellRoomToCamp();
                     break;
 
-                case 20:
+                case 25:
                     MenuManager.removeCellRoomFromCamp();
+                    break;
 
-                case 21:
+                case 26:
+                    MenuManager.setWardenForCamp();
+                    break;
+
+                case 27:
+                    MenuManager.searchCampByID();
+                    break;
+
+                case 28:
                     MenuManager.changePassword();
                     break;
 
