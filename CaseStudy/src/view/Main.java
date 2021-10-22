@@ -21,28 +21,28 @@ public class Main {
 
         LoadingFileManagers.loadManagementFiles();
 
-
-        Account account1 = new Account("dinhtrong", "123", AccountLevel.LEADER, "Nguyen Dinh Trong", 123);
-        Account account2 = new Account("hoanghuong", "123", AccountLevel.STAFF, "Tran Hoang Huong", 143);
-        Warden w1 = new Warden("Trong", "Hanoi", (LocalDate.of(1994, 12, 9)), 123, (LocalDate.of(2010, 1, 26)) , "Leader", account1);
-        Prisoner p1 = new Prisoner("Phuc", "Quang Ngai", 111, (LocalDate.of(1994, 12, 9)), "A", 2, (LocalDate.of(2010, 1, 26)));
-        CellRoom c1 = new CellRoom(101, 4);
-        Warden w2 = new Warden("Hoang", "Bac Ninh", (LocalDate.of(1994, 12, 9)), 143, (LocalDate.of(2010, 1, 26)) , "Staff", account2);
-        Camp camp1 = new Camp("A", 222, LoadingFileManagers.cellRoomManager.getCellRoomList(), w2);
-
-        c1.addNewPrisoner(p1);
-        camp1.setWarden(w2);
-
-        LoadingFileManagers.wardenManager.add(w1);
-        LoadingFileManagers.wardenManager.add(w2);
-        LoadingFileManagers.prisonerManager.add(p1);
-        LoadingFileManagers.cellRoomManager.add(c1);
-        LoadingFileManagers.accountManager.add(account1);
-        LoadingFileManagers.campManager.add(camp1);
-
-        LoadingFileManagers.prisonManager.setCamps(LoadingFileManagers.campManager.getCampList());
-        LoadingFileManagers.prisonManager.setWardenLeader(w1);
-        LoadingFileManagers.prisonManager.setName("Thanh Xuan");
+//
+//        Account account1 = new Account("dinhtrong", "123", AccountLevel.LEADER, "Nguyen Dinh Trong", 123);
+//        Account account2 = new Account("hoanghuong", "123", AccountLevel.STAFF, "Tran Hoang Huong", 143);
+//        Warden w1 = new Warden("Trong", "Hanoi", (LocalDate.of(1994, 12, 9)), 123, (LocalDate.of(2010, 1, 26)) , "Leader", account1);
+//        Prisoner p1 = new Prisoner("Phuc", "Quang Ngai", 111, (LocalDate.of(1994, 12, 9)), "A", 2, (LocalDate.of(2010, 1, 26)));
+//        CellRoom c1 = new CellRoom(101, 4);
+//        Warden w2 = new Warden("Hoang", "Bac Ninh", (LocalDate.of(1994, 12, 9)), 143, (LocalDate.of(2010, 1, 26)) , "Staff", account2);
+//        Camp camp1 = new Camp("A", 222, LoadingFileManagers.cellRoomManager.getCellRoomList(), w2);
+//
+//        c1.addNewPrisoner(p1);
+//        camp1.setWarden(w2);
+//
+//        LoadingFileManagers.wardenManager.add(w1);
+//        LoadingFileManagers.wardenManager.add(w2);
+//        LoadingFileManagers.prisonerManager.add(p1);
+//        LoadingFileManagers.cellRoomManager.add(c1);
+//        LoadingFileManagers.accountManager.add(account1);
+//        LoadingFileManagers.campManager.add(camp1);
+//
+//        LoadingFileManagers.prisonManager.setCamps(LoadingFileManagers.campManager.getCampList());
+//        LoadingFileManagers.prisonManager.setWardenLeader(w1);
+//        LoadingFileManagers.prisonManager.setName("Thanh Xuan");
 
 //        System.out.println(LoadingFileManagers.prisonManager.toString());
 

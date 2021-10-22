@@ -51,10 +51,10 @@ public class CellRoom implements Serializable {
 
     @Override
     public String toString() {
-        return "CellRoom{" +
-                "number=" + number +
-                ", numberOfBeds=" + numberOfBeds +
-                ", prisoners=" + prisoners +
-                '}';
+        return "CellRoom: " + "\n" +
+                "Room Number: " + number + "\n" +
+                "Number Of Beds: " + numberOfBeds + "\n" +
+                "Prisoner: " + prisoners + "\n";
+
     }
 }

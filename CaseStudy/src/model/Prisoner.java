@@ -91,15 +91,14 @@ public class Prisoner implements Serializable {
 
     @Override
     public String toString() {
-        return "Prisoner{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", id=" + id +
-                ", dob=" + dob +
-                ", crimeLevel='" + crimeLevel + '\'' +
-                ", yearsInPrison=" + yearsInPrison +
-                ", dateOfExecution=" + dateOfExecution +
-                ", dateOfExpiration=" + dateOfExpiration +
-                '}';
+        return "Prisoner:" + "\n" +
+                "Name: " + name + '\n' +
+                "Address: '" + address + '\n' +
+                "ID: " + id + "\n" +
+                "DOB: " + dob + "\n" +
+                "Crime Level: " + crimeLevel + '\n' +
+                "Years In Prison: " + yearsInPrison + "\n" +
+                "Date Of Execution: " + dateOfExecution + "\n" +
+                "Date Of Expiration: " + dateOfExpiration + "\n";
     }
 }

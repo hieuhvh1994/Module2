@@ -58,12 +58,11 @@ public class Camp implements Serializable {
 
     @Override
     public String toString() {
-        return "Camp{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", cellRooms=" + cellRooms +
-                ", warden=" + warden +
-                '}';
+        return "Camp: " + "\n" +
+                "Name: " + name + '\n' +
+                "ID: " + id + "\n" +
+                "Cell Room: " + cellRooms + "\n" +
+                "Warden: " + warden + "\n";
     }
 
     public void addNewCellRoom(CellRoom cellRoom) {

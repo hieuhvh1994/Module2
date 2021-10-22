@@ -82,13 +82,13 @@ public class Warden implements Serializable {
 
     @Override
     public String toString() {
-        return "Warden{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", dob=" + dob +
-                ", id=" + id +
-                ", workingStartDate=" + workingStartDate +
-                ", position='" + position + '\'' +
-                '}';
+        return "Warden: " + "\n" +
+                "Name: " + name + '\n' +
+                "Address: " + address + '\n' +
+                "DOB: " + dob + "\n" +
+                "ID: " + id + "\n" +
+                "Working Start Date: " + workingStartDate + "\n" +
+                "Position: " + position + '\n';
+        
     }
 }
