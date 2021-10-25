@@ -64,15 +64,15 @@ public class MenuManager {
 
 
         Scanner inputEmail= new Scanner(System.in);
-        System.out.println("Enter new email: ");
+        System.out.println("Nhập Email mới: ");
         String email = inputEmail.nextLine();
 
         boolean resultEmail = emailValidate(number);
 
         while (!resultEmail) {
-            System.out.println("The email is wrong!!");
+            System.out.println("Định dạng email sai!! Hãy nhập lại!!");
             Scanner inputNewEmail = new Scanner(System.in);
-            System.out.println("Enter new email: ");
+            System.out.println("Nhập email mới: ");
             email = inputNewEmail.nextLine();
             resultEmail = phoneNumberValidate(email);
         }
@@ -80,7 +80,7 @@ public class MenuManager {
 
 
         LoadingFileManager.phonebookManager.add(new Phonebook(number, group, name, sex, address, dob, email));
-        System.out.println("Added Successful");
+        System.out.println("Thêm thành công");
     }
 
     public static boolean phoneNumberValidate(String str) {
@@ -103,66 +103,66 @@ public class MenuManager {
 
     public static void updatePhonebook() throws IOException {
         LoadingFileManager.phonebookManager.showAllList();
-        System.out.println("Choose the phonebook to update information: ");
+        System.out.println("Chọn số để sửa thông tin: ");
         Scanner choicePhonebook = new Scanner(System.in);
         int choice = choicePhonebook.nextInt();
 
         Scanner inputNumber = new Scanner(System.in);
-        System.out.println("Enter new number: ");
+        System.out.println("Nhập số mới: ");
         String number = inputNumber.nextLine();
 
         boolean resultPhone = phoneNumberValidate(number);
 
         while (!resultPhone) {
-            System.out.println("The phone number is wrong!!");
+            System.out.println("Định dạng số điện thoại sai!! Hãy nhập lại");
             Scanner inputNewNumber = new Scanner(System.in);
-            System.out.println("Enter new number: ");
+            System.out.println("Nhập số mới: ");
             number = inputNewNumber.nextLine();
             resultPhone = phoneNumberValidate(number);
         }
 
 
         Scanner inputGroup = new Scanner(System.in);
-        System.out.println("Enter new group: ");
+        System.out.println("Nhập nhóm mới: ");
         String group = inputGroup.nextLine();
 
         Scanner inputName = new Scanner(System.in);
-        System.out.println("Enter new name: ");
+        System.out.println("Nhập tên mới: ");
         String name = inputName.nextLine();
 
         Scanner inputSex = new Scanner(System.in);
-        System.out.println("Enter sex: ");
+        System.out.println("Nhập giới tính: ");
         String sex = inputSex.nextLine();
 
         Scanner inputAddress = new Scanner(System.in);
-        System.out.println("Enter new address: ");
+        System.out.println("Nhập địa chỉ mới: ");
         String address = inputAddress.nextLine();
 
         Scanner inputYear = new Scanner(System.in);
-        System.out.println("Enter Year of Birth: ");
+        System.out.println("Nhập năm sinh: ");
         String year = inputYear.nextLine();
 
         Scanner inputMonth = new Scanner(System.in);
-        System.out.println("Enter Year of Month: ");
+        System.out.println("Nhập tháng sinh: ");
         String month = inputMonth.nextLine();
 
         Scanner inputDay = new Scanner(System.in);
-        System.out.println("Enter Year of Day: ");
+        System.out.println("Nhập ngày sinh: ");
         String day = inputDay.nextLine();
 
         String dob = year + "-" + month + "-" + day;
 
 
         Scanner inputEmail= new Scanner(System.in);
-        System.out.println("Enter new email: ");
+        System.out.println("Nhập email mới: ");
         String email = inputEmail.nextLine();
 
         boolean resultEmail = emailValidate(number);
 
         while (!resultEmail) {
-            System.out.println("The email is wrong!!");
+            System.out.println("Định dạng email sai!! Hãy nhập lại");
             Scanner inputNewEmail = new Scanner(System.in);
-            System.out.println("Enter new email: ");
+            System.out.println("Nhập email mới: ");
             email = inputNewEmail.nextLine();
             resultEmail = phoneNumberValidate(email);
         }
@@ -170,25 +170,25 @@ public class MenuManager {
 
 
         LoadingFileManager.phonebookManager.update(choice - 1, new Phonebook(number, group, name, sex, address, dob, email));
-        System.out.println("Updated Successful");
+        System.out.println("Sửa thông tin thành công!!");
 
     }
 
     public static void deletePhonebook() throws IOException {
         LoadingFileManager.phonebookManager.showAllList();
-        System.out.println("Choose the phonebook to delete: ");
+        System.out.println("Chọn số để xóa: ");
         Scanner choicePhonebook = new Scanner(System.in);
         int choice = choicePhonebook.nextInt();
 
         LoadingFileManager.phonebookManager.deleteByIndex(choice-1);
 
-        System.out.println("Deleted successful!!");
+        System.out.println("Xóa thành công!!");
 
     }
 
     public static void findPhoneBookByPhone() {
         Scanner inputNumber = new Scanner(System.in);
-        System.out.println("Enter the phone number to find phonebook: ");
+        System.out.println("Nhập số để tìm kiếm: ");
         String number = inputNumber.nextLine();
 
         for (Phonebook phonebook : LoadingFileManager.phonebookManager.getPhonebookList()) {
@@ -200,18 +200,18 @@ public class MenuManager {
 
     public static void readFile() throws IOException, ClassNotFoundException {
         List<Phonebook> phonebooks = new ArrayList<>();
-        System.out.println("Reading file from contacts.csv...");
+        System.out.println("Đọc file từ contacts.csv...");
         phonebooks = LoadingFileManager.filePhonebookManager.readFile();
         LoadingFileManager.phonebookManager.setPhonebookList(phonebooks);
-        System.out.println("Read successful!!");
+        System.out.println("Đọc thành công!!");
         LoadingFileManager.phonebookManager.showAllList();
 
     }
 
     public static void writeFile() throws IOException, ClassNotFoundException {
-        System.out.println("Writing file from contacts.csv...");
+        System.out.println("Ghi file contacts.csv...");
         LoadingFileManager.filePhonebookManager.writeFile(LoadingFileManager.phonebookManager.getPhonebookList());
-        System.out.println("Writing successful!!");
+        System.out.println("Ghi file thành công!!");
 
     }
 }
