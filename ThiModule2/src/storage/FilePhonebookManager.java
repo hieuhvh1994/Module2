@@ -85,7 +85,6 @@ public class FilePhonebookManager implements IFileManager<Phonebook> {
         }
 
 
-        phonebooks.remove(0);
         return phonebooks;
     }
 

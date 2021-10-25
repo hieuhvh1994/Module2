@@ -18,46 +18,46 @@ public class MenuManager {
 
     public static void addNewPhonebook() throws IOException {
         Scanner inputNumber = new Scanner(System.in);
-        System.out.println("Enter new number: ");
+        System.out.println("Nhập số mới: ");
         String number = inputNumber.nextLine();
 
         boolean resultPhone = phoneNumberValidate(number);
 
         while (!resultPhone) {
-            System.out.println("The phone number is wrong!!");
+            System.out.println("Định dạng số điện thoại sai!! Hãy nhập lại!!");
             Scanner inputNewNumber = new Scanner(System.in);
-            System.out.println("Enter new number: ");
+            System.out.println("Nhập số mới: ");
             number = inputNewNumber.nextLine();
             resultPhone = phoneNumberValidate(number);
         }
 
 
         Scanner inputGroup = new Scanner(System.in);
-        System.out.println("Enter new group: ");
+        System.out.println("Nhập nhóm mới: ");
         String group = inputGroup.nextLine();
 
         Scanner inputName = new Scanner(System.in);
-        System.out.println("Enter new name: ");
+        System.out.println("Nhập tên mới: ");
         String name = inputName.nextLine();
 
         Scanner inputSex = new Scanner(System.in);
-        System.out.println("Enter sex: ");
+        System.out.println("Nhập giới tính: ");
         String sex = inputSex.nextLine();
 
         Scanner inputAddress = new Scanner(System.in);
-        System.out.println("Enter new address: ");
+        System.out.println("Nhập địa chỉ mới: ");
         String address = inputAddress.nextLine();
 
         Scanner inputYear = new Scanner(System.in);
-        System.out.println("Enter Year of Birth: ");
+        System.out.println("Nhập năm sinh: ");
         String year = inputYear.nextLine();
 
         Scanner inputMonth = new Scanner(System.in);
-        System.out.println("Enter Year of Month: ");
+        System.out.println("Nhập tháng sinh: ");
         String month = inputMonth.nextLine();
 
         Scanner inputDay = new Scanner(System.in);
-        System.out.println("Enter Year of Day: ");
+        System.out.println("Nhập Ngày Sinh: ");
         String day = inputDay.nextLine();
 
         String dob = year + "-" + month + "-" + day;

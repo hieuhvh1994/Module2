@@ -66,6 +66,7 @@ public class PhonebookManager implements IGeneralManager<Phonebook> {
         for (Phonebook phonebook : phonebookList) {
             System.out.println(i + ". " + phonebook.toString());
         }
+        i++;
 
     }
 }
