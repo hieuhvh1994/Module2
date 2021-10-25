@@ -172,6 +172,7 @@ public class MenuManager {
         LoadingFileManager.phonebookManager.update(choice - 1, new Phonebook(number, group, name, sex, address, dob, email));
         System.out.println("Sửa thông tin thành công!!");
 
+
     }
 
     public static void deletePhonebook() throws IOException {

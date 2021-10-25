@@ -35,7 +35,7 @@ public class FilePhonebookManager implements IFileManager<Phonebook> {
 
 
             for (Phonebook phonebook : phonebooks) {
-                String line  = phonebook.getNumber() +","+ phonebook.getGroup() +","+ phonebook.getName() +","+ phonebook.getSex() +","+ phonebook.getAddress() +","+ phonebook.getDob() +","+ phonebook.getEmail();
+                String line  = phonebook.getNumber() +","+ phonebook.getGroup() +","+ phonebook.getName() +","+ phonebook.getSex() +","+ phonebook.getAddress() +","+ phonebook.getDob() +","+ phonebook.getEmail() +"\n";
                 writer.write(line);
 
             }
